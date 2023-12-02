@@ -1,9 +1,10 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Uczen extends Osoba{
     private String[] charakterystyka;
     private int ID;
-    private ArchivOcen archiv;
+    private List<String> przedmioty;
 
     public void przegladInformacji(){
 
@@ -14,12 +15,13 @@ public class Uczen extends Osoba{
     }
 
     public void przegladOcen(){
-
+        Administrator.wyswietlOceny(this);
     }
 
     public Uczen(String imie, String nazwisko, int telefon, String email, String haslo, String... charakterystyka){
         super(imie, nazwisko, telefon, email, haslo);
         this.charakterystyka = charakterystyka;
+
     }
 
     public Uczen(String imie, String nazwisko, int telefon, String email, String haslo){
@@ -57,6 +59,17 @@ public class Uczen extends Osoba{
     }
 
 
+    @Override
+    public String toString() {
+        return "Uczen: " +
+                "imie - " + imie + '\n' +
+                "nazwisko - " + nazwisko + '\n' +
+                "telefon - " + telefon + '\n' +
+                "email - " + email + '\n' +
+                "haslo - " + haslo + '\n' +
+                "ID - " + ID + '\n' +
+                "charakterystyka: - " + Arrays.toString(charakterystyka);
+    }
 
 
 }
