@@ -1,19 +1,37 @@
+import java.util.Arrays;
+
 public class Nauczyciel extends Osoba {
+
     private int zarobki;
-    private String przedmiot;
+    private String[] przedmioty;
     private int doswiadczenie;
 
-    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, String przedmiot, int doswiadczenie, int zarobki) {
-        super(imie, nazwisko, telefon, email, haslo);
-        this.przedmiot = przedmiot;
-        this.doswiadczenie = doswiadczenie;
-        this.zarobki = zarobki;
+    //archiv ocen z danego przedmiotu
+    private ArchivOcen archivOcen;
+
+    public void putOcena(Administrator admin, Uczen uczen, double ocena, String przedmiot) {
+        if (archivOcen != null) {
+            archivOcen.dodajOcene(ocena, przedmiot);
+            admin.
+        }else {
+            System.out.println("Nie znaleziono archivu");
+        }
     }
 
-    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, String przedmiot, int doswiadczenie) {
+
+    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, int zarobki, String... przedmioty) {
         super(imie, nazwisko, telefon, email, haslo);
-        this.przedmiot = przedmiot;
+        this.przedmioty = przedmioty;
         this.doswiadczenie = doswiadczenie;
+        this.zarobki = zarobki;
+        this.archivOcen = new ArchivOcen();
+    }
+
+    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, String... przedmioty) {
+        super(imie, nazwisko, telefon, email, haslo);
+        this.przedmioty = przedmioty;
+        this.doswiadczenie = doswiadczenie;
+        this.archivOcen = new ArchivOcen();
     }
 
     public void setZarobki(int zarobki){
@@ -24,12 +42,55 @@ public class Nauczyciel extends Osoba {
         return this.doswiadczenie;
     }
 
-    public String getPrzedmiot(){
-        return this.przedmiot;
+    public void setDoswiadczenie(int doswiadczenie) {
+        this.doswiadczenie = doswiadczenie;
+    }
+
+    public void setPrzedmioty(String[] przedmioty){
+        this.przedmioty = przedmioty;
+    }
+
+    public String[] getPrzedmioty(){
+        return this.przedmioty;
     }
 
     public int getZarobki(){
         return this.zarobki;
+    }
+
+    // inner class of the class Nauczyciel
+    public class Zadanie {
+
+        private String tytul;
+        private String termin;
+        private String opis;
+        private int punkty;
+        /* Funktional do zcytu opisu zadania
+        z pliku w strukture danych
+        */
+        public Zadanie(String tytul, String termin, String opis, int punkty) {
+            this.tytul = tytul;
+            this.termin = termin;
+            this.opis = opis;
+            this.punkty = punkty;
+        }
+        public String getTytul() {
+            return tytul;
+        }
+
+        public String getTermin() {
+            return termin;
+        }
+
+        public String getOpis() {
+            return opis;
+        }
+
+        public int getPunkty() {
+            return punkty;
+        }
+
+
     }
 
     public void wprowadzenieOcen(){
@@ -63,6 +124,19 @@ public class Nauczyciel extends Osoba {
     public void pomoc(){
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Nauczyciel: " +
+                "imie - " + imie + '\n' +
+                "nazwisko - " + nazwisko + '\n' +
+                "telefon - " + telefon + '\n' +
+                "email - " + email + '\n' +
+                "haslo - " + haslo + '\n' +
+                "zarobki - " + zarobki + '\n' +
+                "przedmiot - " + przedmioty + '\n' +
+                "doswiadczenie - " + doswiadczenie;
     }
 
 }

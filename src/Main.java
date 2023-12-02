@@ -11,10 +11,17 @@ public class Main {
         System.out.println(uczen1.getCharakterystyka());
         System.out.println(osoba2.getDoswiadczenie());
 
+        Administrator administrator = new Administrator();
+
+        ArchivOcen archivOcen = uczen1.getArchivOcen();
 
 
+        nauczyciel.putOcena(archivOcen, uczen, 4.5);
+        nauczyciel.putOcena(archivOcen, uczen, 5.0);
 
-
+        // Uczen can view grades
+        List<Double> oceny = uczen.getOceny();
+        System.out.println("Oceny: " + oceny);
 
 
 

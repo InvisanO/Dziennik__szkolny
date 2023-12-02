@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface Tablice {
 
-    public void wyswietlOceny(List<Integer> oceny);
+    //public void wyswietlOceny(Uczen uczen);
     public void wydrukujStatystyke(List<String> var);
 
 }
