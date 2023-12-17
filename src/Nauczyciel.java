@@ -12,7 +12,7 @@ public class Nauczyciel extends Osoba {
     public void putOcena(Administrator admin, Uczen uczen, double ocena, String przedmiot) {
         if (archivOcen != null) {
             archivOcen.dodajOcene(ocena, przedmiot);
-            admin.
+            admin.dodajArchiv(archivOcen, uczen);
         }else {
             System.out.println("Nie znaleziono archivu");
         }
