@@ -1,13 +1,14 @@
 import java.util.*;
 
-public class Administrator implements Zarobki, Tablice {
+public class Administrator extends Osoba implements Zarobki, Tablice {
 
     /**
      * obieg informacji o zaplanowanych zastępstwach oraz odwołanych i przeniesionych lekcjach.
      */
 
-
+    private String username;
     private static Map<Uczen, ArchivOcen> archivWszystkichOcen = new HashMap<>();
+
     public void informacjaOZmianach(){
 
     }
@@ -26,10 +27,15 @@ public class Administrator implements Zarobki, Tablice {
         return Lista;
     }
 
-    public Administrator(){
-
+    public Administrator(String imie, String nazwisko, int telefon, String email, String haslo, String username){
+        super(imie, nazwisko, telefon, email, haslo);
+        this.username = username;
     }
 
+    @Override
+    void pomoc() {
+
+    }
 
     public static void wyswietlOceny(Uczen uczen) {
         ArchivOcen archivOcen = archivWszystkichOcen.get(uczen);
@@ -48,6 +54,10 @@ public class Administrator implements Zarobki, Tablice {
     public List<Double> obliczSrednia(List<Double> lista_ocen){
 
         return lista_ocen;
+    }
+
+    public Map<Uczen, ArchivOcen> getArchivOcen() {
+        return this.archivWszystkichOcen;
     }
 }
 
