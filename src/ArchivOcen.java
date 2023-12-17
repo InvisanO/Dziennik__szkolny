@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArchivOcen {
+
     private Map<String, Double> tabelaOcen = new HashMap<>();
     public ArchivOcen() {
     }
