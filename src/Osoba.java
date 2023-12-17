@@ -1,14 +1,17 @@
+import java.io.*;
+
+abstract class Osoba implements Serializable {
 
 
-abstract class Osoba {
     protected String imie;
     protected String nazwisko;
     protected int telefon;
     protected String email;
     protected String haslo;
 
+    private static final long serialVersionUID = 111000;
 
-    public Osoba(String imie, String nazwisko, int telefon, String email, String haslo){
+    public Osoba(String imie, String nazwisko, int telefon, String email, String haslo) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.telefon = telefon;
@@ -21,6 +24,8 @@ abstract class Osoba {
     public Integer getTelefon(){return this.telefon;};
     public String getEmail(){return this.email;};
     public String getHaslo(){return this.haslo;};
+
+
 
     abstract void pomoc();
     @Override

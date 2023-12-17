@@ -93,19 +93,22 @@ public class Nauczyciel extends Osoba {
 
     }
 
-    public void wprowadzenieOcen(){
-
+    public void wprowadzenieOcen() {
+        // Implement the logic for entering grades
+        // For example, you might display a list of students and their IDs,
+        // then prompt the teacher to enter grades for each student and subject.
     }
 
-    public void pracaDomowa(){
-
+    public void pracaDomowa() {
+        // Implement the logic for assigning homework
+        // For example, you might list the subjects, allow the teacher to select one,
+        // and then enter details about the homework assignment.
     }
 
-    public void zarzadzanieUczniami(){
-
+    public void zarzadzanieUczniami() {
+        // Implement the logic for managing students
+        // This could include displaying a list of students, their information, and options to perform various actions.
     }
-
-
 
     @Override
     public String getImie(){return super.getImie();}
