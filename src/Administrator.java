@@ -23,6 +23,10 @@ public class Administrator extends Osoba implements Zarobki, Tablice {
         }
     }
 
+    public void delete(){
+
+    }
+
     public Administrator(String imie, String nazwisko, int telefon, String email, String haslo, String username) {
         super(imie, nazwisko, telefon, email, haslo);
         this.username = username;

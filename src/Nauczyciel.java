@@ -93,11 +93,6 @@ public class Nauczyciel extends Osoba {
 
     }
 
-    public void wprowadzenieOcen() {
-        // Implement the logic for entering grades
-        // For example, you might display a list of students and their IDs,
-        // then prompt the teacher to enter grades for each student and subject.
-    }
 
     public void pracaDomowa() {
         // Implement the logic for assigning homework
