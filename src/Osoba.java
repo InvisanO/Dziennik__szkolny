@@ -2,7 +2,7 @@ import java.io.*;
 
 abstract class Osoba implements Serializable {
 
-
+    protected String id;
     protected String imie;
     protected String nazwisko;
     protected int telefon;
@@ -11,6 +11,14 @@ abstract class Osoba implements Serializable {
 
     private static final long serialVersionUID = 111000;
 
+    public Osoba(String id, String imie, String nazwisko, int telefon, String email, String haslo) {
+        this.id = id;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.telefon = telefon;
+        this.email = email;
+        this.haslo = haslo;
+    }
     public Osoba(String imie, String nazwisko, int telefon, String email, String haslo) {
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -26,8 +34,7 @@ abstract class Osoba implements Serializable {
     public String getHaslo(){return this.haslo;};
 
 
-
-    abstract void pomoc();
+    // abstract void ();
     @Override
     public String toString() {
         return "imie - " + this.imie + '\n' +

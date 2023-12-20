@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Nauczyciel extends Osoba {
@@ -5,7 +6,8 @@ public class Nauczyciel extends Osoba {
     private int zarobki;
     private String[] przedmioty;
     private int doswiadczenie;
-
+    private String id;
+    private ArrayList<Zadanie> zadania;
     //archiv ocen z danego przedmiotu
     private ArchivOcen archivOcen;
 
@@ -19,16 +21,16 @@ public class Nauczyciel extends Osoba {
     }
 
 
-    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, int zarobki, String... przedmioty) {
-        super(imie, nazwisko, telefon, email, haslo);
+    public Nauczyciel(String id, String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, int zarobki, String... przedmioty) {
+        super(id, imie, nazwisko, telefon, email, haslo);
         this.przedmioty = przedmioty;
         this.doswiadczenie = doswiadczenie;
         this.zarobki = zarobki;
         this.archivOcen = new ArchivOcen();
     }
 
-    public Nauczyciel(String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, String... przedmioty) {
-        super(imie, nazwisko, telefon, email, haslo);
+    public Nauczyciel(String id, String imie, String nazwisko, int telefon, String email, String haslo, int doswiadczenie, String... przedmioty) {
+        super(id, imie, nazwisko, telefon, email, haslo);
         this.przedmioty = przedmioty;
         this.doswiadczenie = doswiadczenie;
         this.archivOcen = new ArchivOcen();
@@ -90,19 +92,42 @@ public class Nauczyciel extends Osoba {
             return punkty;
         }
 
-
+        public void delete() {
+            this.tytul = null;
+            this.termin = null;
+            this.opis = null;
+            this.punkty = 0;
+        }
     }
+    public void pracaDomowa(String przedmiot, String tytul, String termin, String opis, int punkty) {
+        Zadanie noweZadanie = new Zadanie(tytul, termin, opis, punkty);
+        zadania.add(noweZadanie);
 
-
-    public void pracaDomowa() {
-        // Implement the logic for assigning homework
-        // For example, you might list the subjects, allow the teacher to select one,
-        // and then enter details about the homework assignment.
+        System.out.println("Nowe zadanie dodane: " + tytul);
     }
 
     public void zarzadzanieUczniami() {
         // Implement the logic for managing students
         // This could include displaying a list of students, their information, and options to perform various actions.
+
+
+    }
+
+    public void delete() {
+        System.out.println("Usuwam nauczyciela: " + getImie() + " " + getNazwisko());
+
+        // Remove teacher's assignments
+        for (Zadanie zadanie : zadania) {
+            zadanie.delete();
+        }
+
+        // Remove teacher's evaluations
+        for (Uczen uczen : Administrator.archivWszystkichOcen.keySet()) {
+            ArchivOcen archivOcen = Administrator.archivWszystkichOcen.get(uczen);
+            if (archivOcen != null) {
+                archivOcen.usunOcenyPrzedmiotu(przedmioty);
+            }
+        }
     }
 
     @Override
@@ -118,11 +143,7 @@ public class Nauczyciel extends Osoba {
     @Override
     public String getHaslo(){return super.getHaslo();}
 
-    @Override
-    public void pomoc(){
 
-
-    }
 
     @Override
     public String toString() {

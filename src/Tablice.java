@@ -1,4 +1,6 @@
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * wydruk arkuszow z ocenami
@@ -8,6 +10,16 @@ import java.util.List;
 public interface Tablice {
 
     //public void wyswietlOceny(Uczen uczen);
-    public void wydrukujStatystyke(List<String> var);
 
+    /**
+     * Print statistics for the given data.
+     *
+     *
+     */
+    //void wydrukujStatystyke();
+    <T> void find(List<T> data, Predicate<T> condition);
+
+    <T> void sort(List<T> data, Comparator<T> criterion);
+
+    double obliczSrednia(List<Double> lista_ocen);
 }
