@@ -28,10 +28,7 @@ public class Uczen extends Osoba implements Serializable {
     public Uczen(String imie, String nazwisko, int telefon, String email, String haslo) {
         super(imie, nazwisko, telefon, email, haslo);
     }
-    @Override
-    public void pomoc(){
 
-    }
     @Override
     public String getImie(){return super.getImie();}
     @Override
@@ -61,8 +58,24 @@ public class Uczen extends Osoba implements Serializable {
         przedmioty.remove(przedmiot);
     }
     public void przeslijZadanie(String przedmiot, String tresc) {
-        // Implement the logic to submit assignments
-        // This could include storing the assignment, notifying the teacher, etc.
+        List<Nauczyciel.Zadanie> zadania = // Get the list of assignments from somewhere;
+
+                // Find the zadanie for the specified przedmiot
+
+        for (Nauczyciel.Zadanie zad : Nauczyciel.getZadania()) {
+            if (zad.getPrzedmiot().equals(przedmiot)) {
+                zadanieDoWyslania = zad;
+                break;
+            }
+        }
+
+        if (zadanieDoWyslania != null) {
+            System.out.println("Zadanie wysłane: " + tresc);
+            // Additional logic, e.g., store the assignment, notify the teacher, etc.
+        } else {
+            System.out.println("Brak zadania dla przedmiotu: " + przedmiot);
+        }
+    }
     }
 
 

@@ -17,4 +17,6 @@ public class ArchivOcen {
         }
     }
 
+    public void usunOcenyPrzedmiotu(String[] przedmioty) {
+    }
 }
